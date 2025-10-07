@@ -1,44 +1,30 @@
 #include <stdio.h>
 
-#define N 5
+/*---------------------------------------------*/
 
-/*----------------------------------------*/
+void calc_hora(int h1, int m1, int minutos_somados, int *h2, int *m2){
 
-int maior_valor(int matriz[N][N], int *linha, int *coluna){
+    int minutos_totais = (h1 * 60 + m1 + minutos_somados) % 1440;
 
-    int i,j, maior = 0;
-
-    maior = matriz[0][0];
-    *linha = 0;
-    *coluna = 0;
-
-
-    for(i=0;i<N;i++){
-        for(j=0;j<N;j++){
-            if(matriz[i][j]>maior){
-                maior = matriz[i][j];
-                *linha = i;
-                *coluna = j;
-            }
-        }
-    }
-
-    return maior;
+    *h2 = minutos_totais/60;
+    *m2 = minutos_totais%60;
 }
 
-/*------------------------------------------*/
+/*---------------------------------------------*/
 
 int main(){
 
-    int matriz[N][N] ={
-        {1, 2, 3, 4, 5}, 
-        {6, 7, 8, 9, 10}, 
-        {11, 12, 99, 14, 15},
-        {16, 17, 18, 19, 20},
-        {21, 22, 23, 24, 25}
-    };
-    int linha,coluna;
+    int h1,m1,minutos_somados;
+    int h2, m2;
 
-    printf("Maior valor da matriz: %d\n", maior_valor(matriz, &linha, &coluna));
-    printf("Linha e coluna do valor: %d e %d\n", linha, coluna);
+    printf("Digite um horario (com hora e minuto): ");
+    scanf("%d %d", &h1, &m1);
+
+    printf("Digite a quantidade de minutos a ser somado: ");
+    scanf("%d", &minutos_somados);
+
+    calc_hora(h1,m1,minutos_somados,&h2,&m2);
+
+    printf("O horário informado mais os minutos: %d:%d + %d minutos\n", h1,m1,minutos_somados);
+    printf("Horário atualizado: %d:%d\n", h2,m2);
 }
