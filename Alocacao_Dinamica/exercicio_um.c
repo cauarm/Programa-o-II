@@ -5,7 +5,7 @@
 
 char *gerastr(int n, char c){
 
-    char *str = (char *)malloc(n+1*sizeof(char));
+    char *str = (char *)malloc((n+1)*sizeof(char));
 
     if(str==NULL){
         return NULL;
@@ -31,14 +31,17 @@ int main(){
     char c;
 
     printf("Digite o caractere desejado: \n");
-    scanf("%c", &c);
+    scanf("%c" , &c);
 
     printf("Digite quantas vezes deseja que ele seja repetido: \n");
     scanf("%d", &n);
 
     char *resultado = gerastr(n,c);
 
-    printf("%s\n", resultado);
+    if(resultado!=NULL){
+        printf("%s\n", resultado);
+        free(resultado);
+    }
 
     return 0;
 }
