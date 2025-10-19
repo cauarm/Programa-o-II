@@ -2,17 +2,18 @@
 #include <stdlib.h>
 #include <time.h>
 
-/*--------------------------------------*/
+/*------------------------------------*/
 
 char *aleatoria(int n){
 
-    char *str = (char *) malloc((n+1) * sizeof(char));
+    char *str = (char *) malloc((n+1) * sizeof(char)); 
     if(str==NULL){
         return NULL;
     }
-
     int i;
+
     for(i=0;i<n;i++){
+
         int tipo = rand() % 3;
         switch(tipo){
             case 0: str[i] = 'A' + (rand() % 26);
@@ -34,17 +35,15 @@ char *aleatoria(int n){
 int main(){
 
     srand(time(NULL));
-
     int n;
 
-    printf("Digite o tamanho de sua chave: \n");
+    printf("Digite quantos digitos tera sua chave: \n");
     scanf("%d", &n);
 
     char *chave = aleatoria(n);
 
     if(chave!=NULL){
-        printf("Chave: %s\n", chave);
-        free(chave);
+        printf("Chave aleatoria: %s\n", chave);
     }else{
         printf("ERRO\n");
     }
