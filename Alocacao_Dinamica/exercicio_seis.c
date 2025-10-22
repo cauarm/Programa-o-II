@@ -1,49 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*---------------------------------------*/
+#define N 5
+
+/*-----------------------------------*/
 
 int *interseccao(int *x1, int *x2, int n1, int n2, int *qtd){
 
-    int i,j,k,m;
+    int t = n1;
 
-    *qtd = 0;
+    int *x3 = (int *)malloc(t * sizeof(int));
+    if(x3==NULL){
+        return NULL;
+    }
 
-    int ja_apareceu;
+    int i,j,m,k, ja_apareceu;
+
+    k = 0;
 
     for(i=0;i<n1;i++){
 
         ja_apareceu = 0;
 
         for(m=0;m<i && !ja_apareceu;m++){
-            if(x1[m]==x1[i]){
-                ja_apareceu = 1;
-                break;
-            }
-        }
-
-        if(!ja_apareceu){
-            for(j=0;j<n2 && !ja_apareceu;j++){
-                if(x1[i]==x2[j]){
-                    ja_apareceu = 1;
-                    (*qtd)++;
-                }
-            }
-        }
-    }
-
-    int *x3 = (int *) malloc((*qtd) * sizeof(int));
-    if(x3==NULL){
-        return NULL;
-    }
-
-    k= 0;
-
-    for(i=0;i<n1;i++){
-
-        ja_apareceu = 0;
-
-        for(m=0;m<k && !ja_apareceu;m++){
             if(x3[m]==x1[i]){
                 ja_apareceu = 1;
                 break;
@@ -60,39 +39,37 @@ int *interseccao(int *x1, int *x2, int n1, int n2, int *qtd){
         }
     }
 
+    x3 = (int *)realloc(x3,k*sizeof(int));
+    *qtd = k;
+
     return x3;
 }
 
-/*---------------------------------------*/
-
-void escreve(int *vet, int n){
-
+/*-----------------------------------*/
+void escreve(int *v, int n){
     int i;
 
-    printf("------ INTERSECCAO ------ \n");
+    printf("---- INTERSECCAO ----\n");
 
     for(i=0;i<n;i++){
-        printf(" %d ", vet[i]);
+        printf(" %d ", v[i]);
     }
-
-    printf("\n");
 }
-/*---------------------------------------*/
-
+/*-----------------------------------*/
 int main(){
 
-    int x1[5] = {1,3,5,6,7};
-    int x2[5] = {1,3,4,6,8};
+    int x1[N] = {1,3,5,6,7};
+    int x2[N] = {1,3,4,6,8};
     int qtd;
 
-    int *x3 = interseccao(x1,x2,5,5,&qtd);
+    int *x3 = interseccao(x1,x2,N,N,&qtd);
 
     if(x3!=NULL){
-        escreve(x3, qtd);
+        escreve(x3,qtd);
 
         free(x3);
     }else{
-        printf("ERRO DE MEMORIA.");
+        printf("ERRO DE MEMORIA");
     }
 
     return 0;
