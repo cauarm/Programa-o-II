@@ -1,7 +1,1 @@
-De forma direta e básica, irei fazer todos os exercícios de prática por aqui. 
-
-<<<<<<< HEAD
-Com o passar do tempo, espero poder evoluir e também aprender outras linguagens, onde atualmente sou um iniciante e possuo bastante interesse em front-end e cybersegurança. Enfim, é isto, valeu! 
-=======
-Com o passar do tempo, espero poder evoluir e também aprender outras linguagens, onde atualmente sou um iniciante e possuo bastante interesse em front-end e cybersegurança. Enfim, é isto, valeu! 
->>>>>>> 60e402da4bb19ce16e4a327a299f87d0ba5e9dd6
+Sou um programador iniciante que está cursando ciência da computação e buscando melhorar cada vez mais. Basicamente, aqui estão os exercícios do meu curso que estou fazendo. Tenho interesse futuro em front-end e cybersegurança ( apesar de saber que nenhum dos dois tem algo parecido ). Enfim, é isto, valeu! 
